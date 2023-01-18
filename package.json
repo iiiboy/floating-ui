@@ -12,7 +12,8 @@
   },
   "description": "Floating UI monorepo",
   "workspaces": [
-    "./packages/*"
+    "./packages/*",
+    "./study/*"
   ],
   "scripts": {
     "test:functional": "npx playwright test packages/dom/test/functional",
@@ -23,7 +24,8 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "test:types": "tsc",
     "dev:website": "npm run build && npm -w website run dev",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "debug": "npm run build && yarn --cwd study/@floating-ui-debug dev"
   },
   "alias": {
     "@floating-ui/core": "@floating-ui/core/src/index.ts",

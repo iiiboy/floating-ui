@@ -13,7 +13,8 @@ const platform = {
 };
 
 test('returned data', async () => {
-  const {x, y, placement, strategy, middlewareData} = await computePosition(
+  const {x, y, placement, strategy, middlewareData} =
+    await computePosition(
     reference,
     floating,
     {
