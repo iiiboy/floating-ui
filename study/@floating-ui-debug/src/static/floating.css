@@ -1,0 +1,10 @@
+.button {
+    min-width: 200px;
+}
+
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}

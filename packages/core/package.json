@@ -40,7 +40,7 @@
   "scripts": {
     "test": "jest test",
     "dev": "rollup -c -w",
-    "build": "NODE_ENV=build rollup -c"
+    "build": "rollup -c"
   },
   "author": "atomiks",
   "license": "MIT",

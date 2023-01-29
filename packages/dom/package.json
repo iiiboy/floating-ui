@@ -39,7 +39,7 @@
   ],
   "scripts": {
     "dev": "parcel test/visual/index.html",
-    "build": "NODE_ENV=build rollup -c",
+    "build": "rollup -c",
     "test": "jest test/unit"
   },
   "author": "atomiks",

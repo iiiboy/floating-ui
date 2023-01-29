@@ -12,6 +12,7 @@ const bundles = [
     output: {
       file: path.join(__dirname, 'dist/floating-ui.dom.esm.js'),
       format: 'esm',
+      sourcemap: true,
     },
   },
   {
@@ -19,6 +20,7 @@ const bundles = [
     output: {
       file: path.join(__dirname, 'dist/floating-ui.dom.mjs'),
       format: 'esm',
+      sourcemap: true,
     },
   },
   {
@@ -26,6 +28,7 @@ const bundles = [
     output: {
       file: path.join(__dirname, 'dist/floating-ui.dom.browser.mjs'),
       format: 'esm',
+      sourcemap: true
     },
   },
   {
@@ -33,6 +36,7 @@ const bundles = [
     output: {
       file: path.join(__dirname, 'dist/floating-ui.dom.browser.min.mjs'),
       format: 'esm',
+      sourcemap: true
     },
   },
   {
@@ -44,6 +48,7 @@ const bundles = [
       globals: {
         '@floating-ui/core': 'FloatingUICore',
       },
+      sourcemap: true
     },
   },
   {
@@ -55,6 +60,7 @@ const bundles = [
       globals: {
         '@floating-ui/core': 'FloatingUICore',
       },
+      sourcemap: true
     },
   },
 ];
