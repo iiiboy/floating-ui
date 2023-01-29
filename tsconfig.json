@@ -11,8 +11,9 @@
     "types": ["node", "jest", "resize-observer-browser"],
     "allowJs": true,
     "esModuleInterop": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "sourceMap": true,
   },
   "include": ["packages/**/*", "playwright.config.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "study"]
 }

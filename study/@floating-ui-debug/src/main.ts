@@ -1,7 +1,20 @@
-import './style.css'
+import './style.css';
+import './static/floating.css';
+import {computePosition, autoUpdate} from '@floating-ui/dom';
 
-import { createApp } from 'vue'
+const btn = document.getElementById('button');
+const tooltip = document.getElementById('tooltip');
 
-import App from './App.vue'
+function updatePosition() {
+  computePosition(btn!, tooltip!, {}).then(({x, y}) => {
+    Object.assign(tooltip!.style, {
+      top: `${y}px`,
+      left: `${x}px`
+    });
+  });
+}
 
-createApp(App).mount('#app')
+let cleanup = null;
+
+if (btn && tooltip)
+  cleanup = autoUpdate(btn, tooltip, updatePosition);
