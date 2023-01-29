@@ -25,7 +25,7 @@
     "test:types": "tsc",
     "dev:website": "npm run build && npm -w website run dev",
     "postinstall": "patch-package",
-    "debug": "yarn --cwd study/@floating-ui-debug dev"
+    "debug": "npm -w packages/core run build && npm -w packages/dom run build && yarn --cwd study/@floating-ui-debug dev"
   },
   "alias": {
     "@floating-ui/core": "@floating-ui/core/src/index.ts",

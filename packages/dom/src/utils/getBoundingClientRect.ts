@@ -5,6 +5,11 @@ import {isElement, isLayoutViewport} from './is';
 import {unwrapElement} from './unwrapElement';
 import {getWindow} from './window';
 
+/**
+ * *该函数的作用与 getBoundingRectClient 差不多，都是返回一个 ClientRectObject，但是函数内处理了一些情况，比如缩放，比如 iframe；因为我暂时没有遇到这样的情况，所以暂时没有理解
+ *
+ * *如果没有上述的特殊情况，就可以看作是 getBoundingRectClient
+ **/
 export function getBoundingClientRect(
   element: Element | VirtualElement,
   includeScale = false,
@@ -12,6 +17,7 @@ export function getBoundingClientRect(
   offsetParent?: Element | Window
 ): ClientRectObject {
   const clientRect = element.getBoundingClientRect();
+  // 获取真实的 domElement
   const domElement = unwrapElement(element);
 
   let scale = FALLBACK_SCALE;
@@ -26,7 +32,7 @@ export function getBoundingClientRect(
   }
 
   const win = domElement ? getWindow(domElement) : window;
-  const addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+  const addVisualOffsets = !isLayoutViewport() && isFixedStrategy;// ?不明白
 
   let x =
     (clientRect.left +
@@ -41,6 +47,7 @@ export function getBoundingClientRect(
 
   if (domElement) {
     const win = getWindow(domElement);
+    // *为了更好的支持 iframe，比如 reference 在 iframe 中，但是 floating 在 iframe 外的情况； 具体的 pull-reques
     const offsetWin =
       offsetParent && isElement(offsetParent)
         ? getWindow(offsetParent)

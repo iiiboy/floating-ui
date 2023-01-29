@@ -6,11 +6,15 @@ interface NavigatorUAData {
 
 let uaString: string | undefined;
 
+/**
+ * *如果浏览器支持 navigator.userAgentData 那么将返回处理后的 userAgentData.brands； 否则返回 navigator.userAgent
+ * */
 export function getUAString(): string {
   if (uaString) {
     return uaString;
   }
 
+  // userAgentData 详见：https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData 兼兼容性比较差
   const uaData = (navigator as any).userAgentData as
     | NavigatorUAData
     | undefined;

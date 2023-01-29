@@ -12,9 +12,10 @@ export function getRectRelativeToOffsetParent(
   offsetParent: Element | Window,
   strategy: Strategy
 ): Rect {
+  // *判断是不是 HTMLElement 通过 `? instanceof window.HTMLElement` 判断; html body 都是 true， window 为 false
   const isOffsetParentAnElement = isHTMLElement(offsetParent);
   const documentElement = getDocumentElement(offsetParent);
-  const rect = getBoundingClientRect(
+  const rect = getBoundingClientRect(// 可以粗略看作原生的 getBoundingRectClient
     element,
     true,
     strategy === 'fixed',
@@ -26,7 +27,7 @@ export function getRectRelativeToOffsetParent(
 
   if (
     isOffsetParentAnElement ||
-    (!isOffsetParentAnElement && strategy !== 'fixed')
+    strategy !== 'fixed'
   ) {
     if (
       getNodeName(offsetParent) !== 'body' ||
@@ -37,7 +38,7 @@ export function getRectRelativeToOffsetParent(
 
     if (isHTMLElement(offsetParent)) {
       const offsetRect = getBoundingClientRect(offsetParent, true);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.x = offsetRect.x + offsetParent.clientLeft;// *clientLeft 可以看作左边框的大小
       offsets.y = offsetRect.y + offsetParent.clientTop;
     } else if (documentElement) {
       offsets.x = getWindowScrollBarX(documentElement);
