@@ -14,7 +14,9 @@ function updatePosition() {
   });
 }
 
-let cleanup = null;
+updatePosition();
 
-if (btn && tooltip)
-  cleanup = autoUpdate(btn, tooltip, updatePosition);
+// let cleanup = null;
+//
+// if (btn && tooltip)
+//   cleanup = autoUpdate(btn, tooltip, updatePosition);

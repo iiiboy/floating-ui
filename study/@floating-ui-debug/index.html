@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sourcecode of @floating-ui</title>
+    <style>
+      body {
+        transform: translateY(800px);
+      }
+    </style>
   </head>
   <body>
+    <p>sourcecode of @floating-ui</p>
     <div id="app">
       <button id='button' class='button'>button</button>
-      <p class='tooltip' id='tooltip'>this is tooltip</p>
+      <div class='tooltip-container'>
+        <p class='tooltip' id='tooltip'>this is tooltip</p>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

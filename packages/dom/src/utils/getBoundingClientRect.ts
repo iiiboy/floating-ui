@@ -34,6 +34,9 @@ export function getBoundingClientRect(
   const win = domElement ? getWindow(domElement) : window;
   const addVisualOffsets = !isLayoutViewport() && isFixedStrategy;// ?不明白
 
+  // !注意：假设 offsetParent 的 scale 为 0.8，floating 的 top 设置为 10px 但是实际上 top 为 8px; 因为定位的 top, left, right, bottom 都会受到 scale 的影响。
+  // !所以这里让 x, y, width, height 统统除以 scale 就是为了解除 scale 的影响。
+  // *示例： element 的原生 rect 为 {x: 500, height: 500, width: 50, height: 50} 但是 floating 的 offsetParent 的 scale 为 0.8； 所以得到的 rect 为 {x: 625, y: 625, width: 62.5, height: 62.5}； 这样，如果 floating 的 left，top 设置为 625 那么就与 element 的左上角重叠了
   let x =
     (clientRect.left +
       (addVisualOffsets ? win.visualViewport?.offsetLeft || 0 : 0)) /

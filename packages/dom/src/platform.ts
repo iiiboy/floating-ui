@@ -21,7 +21,7 @@ export const platform: Platform = {
     const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
     const getDimensionsFn = this.getDimensions;
     return {
-      reference: getRectRelativeToOffsetParent(
+      reference: getRectRelativeToOffsetParent(// 大致的类型 { x: number, y: number, width: number, height: number }
         reference,
         await getOffsetParentFn(floating),
         strategy
