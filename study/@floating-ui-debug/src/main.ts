@@ -1,11 +1,13 @@
-import {computePosition, autoUpdate} from '@floating-ui/dom';
+import {computePosition, autoUpdate, flip} from '@floating-ui/dom';
 
 const btn = document.getElementById('button');
 const tooltip = document.getElementById('tooltip');
 
 function updatePosition() {
   computePosition(btn!, tooltip!, {
-    strategy: 'fixed'
+    strategy: 'fixed',
+    middleware: [flip({
+    })]
   }).then(({x, y}) => {
     Object.assign(tooltip!.style, {
       top: `${y}px`,
@@ -14,9 +16,7 @@ function updatePosition() {
   });
 }
 
-updatePosition();
+let cleanup = null;
 
-// let cleanup = null;
-//
-// if (btn && tooltip)
-//   cleanup = autoUpdate(btn, tooltip, updatePosition);
+if (btn && tooltip)
+  cleanup = autoUpdate(btn, tooltip, updatePosition);

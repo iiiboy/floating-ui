@@ -33,6 +33,7 @@ export interface Options {
 }
 
 /**
+ * *简单的来说，原理就是绑定 resize，scroll 事件，监听 reference，floating 元素的 resize 触发了就重新定位
  * Automatically updates the position of the floating element when necessary.
  * @see https://floating-ui.com/docs/autoUpdate
  */
@@ -71,6 +72,7 @@ export function autoUpdate(
 
   let observer: ResizeObserver | null = null;
   if (elementResize) {
+    // *因为第一次执行 observe 就会执行一次回调函数，所以这里声明一个变量，初始化时不进行 update 优化性能
     let initialUpdate = true;
     observer = new ResizeObserver(() => {
       if (!initialUpdate) {
