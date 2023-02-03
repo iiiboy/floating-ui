@@ -113,6 +113,9 @@ export function isLayoutViewport(): boolean {
   return !/^((?!chrome|android).)*safari/i.test(getUAString());// *这个正则将匹配 (string)safari，string 中不能含有 chrome 和 android; 测试了 火狐, edge, chrome, safari 发现只有 safari 匹配成功；但是注意，前面有个取反，所以可以简单理解为只有 safari 不是布局视口
 }
 
+/**
+ * *['html', 'body', '#document'].includes(getNodeName(node));
+ */
 export function isLastTraversableNode(node: Node) {
   return ['html', 'body', '#document'].includes(getNodeName(node));
 }
